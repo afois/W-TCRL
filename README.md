@@ -13,7 +13,7 @@ The datasets used for this study are freely available in the following repositor
 * NATURAL IMAGES: http://www.rctn.org/bruno/sparsenet/
 
 
-**Example of receptive fields development trough 0, 100, ..., 60k training iterations**
+**Example of learned filters trough 0, 100, ..., 60k training iterations**
 
 ![Receptive fields](/images/mnist_cv.png)
 
