@@ -17,6 +17,7 @@ def parallel_sim(comb, optimized_params):
     directory = "tmp/"
 
     if dataset_name == "MNIST":
+        # scale the dataset in range [lb,ub]
         lb = 0.15
         ub = 0.85
 
@@ -28,14 +29,15 @@ def parallel_sim(comb, optimized_params):
                              new_im_size=new_im_size)
 
     if dataset_name == "NATURAL_IMAGES":
+        # scale the dataset in range [lb,ub]
         lb = 0.05
         ub = 0.95
 
         dataset = load_natural_images(seed=seed_nb,
                                       nb_training_img=10,
                                       nb_testing_img=10,
-                                      nb_samples_train=6000,
-                                      nb_samples_test=100,
+                                      nb_samples_train=60000,
+                                      nb_samples_test=None,
                                       patch_size=patch_size)
 
     res = run_model(seed_nb=seed_nb,
@@ -79,7 +81,6 @@ if __name__ == '__main__':
                         'tau_plus_u2v': 1.3,
                         'theta_stdp_u2v': 0.1,
                         'theta_v': 0.25,
-                        'w_min': 0.0,
                         'w_offset': 0.2}
 
     datasets_names = ["MNIST", "NATURAL_IMAGES"]

@@ -1,10 +1,8 @@
 from brian2 import *
 import numpy as np
-
 from parameters import *
 from preprocessing import *
 from encoding import *
-from utils import *
 from neuronal_models import *
 from synaptic_models import *
 from decoding import w_one_neur_to_quant_val
@@ -53,7 +51,7 @@ def run_model(seed_nb,
     nb_iter_get_weights_test = 1
     delta_t_get_weights_test = period_oscil * nb_iter_get_weights_test
 
-    # param found by brian
+    # timescale for homeostatic mechanism
     tau_homeo_w_syn_v2v = (nb_train_vec * period_oscil) / 3
 
     shape_u = (data_dim, bank_size)
@@ -69,7 +67,6 @@ def run_model(seed_nb,
     tau_f_lat_v = optimized_params["tau_f_lat_v"] * ms
 
     # parameters relative to the STDP
-    w_min = optimized_params["w_min"]
     w_offset = optimized_params["w_offset"]
     A_plus_u2v = optimized_params["A_plus_u2v"]
     A_minus_u2v = optimized_params["scale_A_minus"] * A_plus_u2v
@@ -86,7 +83,7 @@ def run_model(seed_nb,
 
     min_dataset = np.min(dataset)
     max_dataset = np.max(dataset)
-    #  scale the dataset in range [lb,ub]
+    # scale the dataset in range [lb,ub]
     norm_dataset = normalize_in_range(lb, ub, dataset)
 
     activations = dataset_to_input_current(
@@ -110,7 +107,7 @@ def run_model(seed_nb,
                           reset=reset_v_layer,
                           refractory=refrac_per_v)
 
-    # v (SOM) afferent connection (i.e. u -> v)
+    # v afferent connection (i.e. u -> v)
     u2v = Synapses(u_layer,
                    target=v_layer,
                    method=diff_method,
@@ -162,11 +159,11 @@ def run_model(seed_nb,
     device.build(directory=build_dir + str(time.time()) + str(nb_neur_v) + str(seed_nb))
 
 
-    ######################################################################################################################################################
+    #############################################################################################################################################
 
-    ############ ############ ############ ############  TRAIN RESULTS ANALYSIS  ############ ############ ############ ############
+    ############ ############ ############ ############  TRAIN RESULTS ANALYSIS  ############ ############ ############ ############ ############
 
-    ######################################################################################################################################################
+    #############################################################################################################################################
 
     ### for each input vector, track number of emitted spikes ###
     train_spikes = get_nb_spikes_per_input(v_spike_mon_train, start_mon_train, period_oscil, nb_train_vec)
@@ -216,11 +213,11 @@ def run_model(seed_nb,
     del v_spike_mon_train
     del w_u2v_train
 
-    ######################################################################################################################################################
+    ###############################################################################################################################
 
-    ############ ############ ############ ############  TEST RESULTS ANALYSIS ############ ############ ############ ############
+    ############ ############ ############ ############  TEST RESULTS ANALYSIS  ############ ############ ############ ############
 
-    ######################################################################################################################################################
+    ###############################################################################################################################
 
     ### for each input vector, track number of emitted spikes ###
     test_spikes = get_nb_spikes_per_input(v_spike_mon_test, start_mon_test, period_oscil, nb_test_vec)
@@ -263,11 +260,11 @@ def run_model(seed_nb,
                 min_dataset,
                 max_dataset)
 
-    ######################################################################################################################################################
+    ######################################################################################################################################
 
-    ############ ############ ############ ############  STORE RESULTS IN A DICTIONNARY ############ ############ ############ ############
+    ############ ############ ############ ############  STORE RESULTS IN A DICTIONARY ############ ############ ############ ############
 
-    ######################################################################################################################################################
+    ######################################################################################################################################
 
     results = {}
 
