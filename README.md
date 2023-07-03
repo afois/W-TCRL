@@ -1,6 +1,6 @@
 # Weight- Temporally Coded Representation Learning (W-TCRL)
 
-This is the code for the paper in submission in Frontiers in Computational Neuroscience "Enhanced representation learning with latency coding in sparsely spiking neural networks".
+This is the code for the paper in submission in Frontiers in Computational Neuroscience "Enhanced representation learning with temporal coding in sparsely spiking neural networks".
 
 **Training a new network:**
 
