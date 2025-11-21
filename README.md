@@ -46,6 +46,3 @@ The experiments rely on publicly available datasets:
   doi     = {10.3389/fncom.2023.1250908}
 }
 ```
-
-If you want, I can also prepare a **minimal** or **more polished** version (with installation instructions, project structure, or a short demo section).
-```
