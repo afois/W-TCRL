@@ -1,19 +1,51 @@
-# Weight- Temporally Coded Representation Learning (W-TCRL)
+# Weight-Temporally Coded Representation Learning (W-TCRL)
 
-This is the code for the paper "Enhanced representation learning with temporal coding in sparsely spiking neural networks".
+This repository contains the official implementation of the method introduced in:
 
-**Training a new network:**
+**[Enhanced representation learning with temporal coding in sparsely spiking neural networks](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2023.1250908/full)**  
 
-Use "python3 launch.py". 
-Results are stored into pickle files.
+---
 
-The datasets used for this study are freely available in the following repositories: 
+## 🔧 Train a new model
 
-* MNIST: http://yann.lecun.com/exdb/mnist/
-* NATURAL IMAGES: http://www.rctn.org/bruno/sparsenet/
+Run:
 
+```bash
+python3 launch.py
+````
 
-**Example of learned filters trough 0, 100, ..., 60k training iterations**
+Training logs and model snapshots are stored as `.pickle` files.
+
+---
+
+## 📦 Datasets
+
+The experiments rely on publicly available datasets:
+
+* **MNIST** — [http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/)
+* **Natural Images (Olshausen & Field)** — [http://www.rctn.org/bruno/sparsenet/](http://www.rctn.org/bruno/sparsenet/)
+
+---
+
+## 🧠 Learned Filters (0 → 60k iterations)
 
 ![Receptive fields](/images/mnist_cv.png)
 
+---
+
+## 📄 Citation
+
+```bibtex
+@article{fois2023enhanced,
+  title   = {Enhanced representation learning with temporal coding in sparsely spiking neural networks},
+  author  = {Fois, Adrien and Girau, Bernard},
+  journal = {Frontiers in Computational Neuroscience},
+  volume  = {17},
+  pages   = {1250908},
+  year    = {2023},
+  doi     = {10.3389/fncom.2023.1250908}
+}
+```
+
+If you want, I can also prepare a **minimal** or **more polished** version (with installation instructions, project structure, or a short demo section).
+```
